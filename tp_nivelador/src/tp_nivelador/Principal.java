@@ -80,6 +80,8 @@ public class Principal {
 		
 	}
 	
+	
+	
 	private static int ingresarProducto(Scanner s, final String[][] PRODUCTOS, int cantProductos, final int COD_MIN, final int COD_MAX, final int CANT_PRODUCTOS_MIN, final int CANT_PRODUCTOS_MAX) {
 				
 			int codigoEmpresa = 0;
