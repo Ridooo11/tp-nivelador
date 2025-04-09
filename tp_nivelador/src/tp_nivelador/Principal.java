@@ -133,6 +133,12 @@ public class Principal {
 			} else {
 				System.out.println("No hay productos para buscar el que tenga menor stock");
 			}
+		case 10:
+			if(superaCantidadMinimaDeProductos) {
+				calcularValorInventario(s, PRODUCTOS, CANT_PRODUCTOS_MIN, cantProductos);
+			} else {
+				System.out.println("No hay productos para calcular el valor del inventario.");
+			}
 			break;
 		case 11:
 			System.out.println("Adiós.");
@@ -256,7 +262,7 @@ public class Principal {
 		}
 		
 		private static String[] ingresarProducto(Scanner s, final String[][] PRODUCTOS, int cantProductos , final int COD_MIN, final int COD_MAX) {
-			
+					
 			int codigoProducto = comprobarCodigoProducto(s, PRODUCTOS, cantProductos, COD_MIN, COD_MAX);
 			String nombreProducto = comprobarNombreProducto(s, PRODUCTOS, cantProductos);
 			
@@ -266,7 +272,7 @@ public class Principal {
 			System.out.println("Ingrese la cantidad del producto:");
 			final int CANTIDAD_PRODUCTO = ingresarEntero(s, 0, Integer.MAX_VALUE);
 			
-			return new String[] {
+			return  new String[] {
 			        String.valueOf(codigoProducto),
 			        nombreProducto,
 			        String.valueOf(PRECIO_PRODUCTO),
@@ -431,6 +437,16 @@ public class Principal {
 		return indiceDeStockMasBajo;
 	}
 	
+	private static void calcularValorInventario(Scanner s, final String[][] PRODUCTOS, final int CANT_PRODUCTOS_MIN, int cantProductos) {
+		int valorInventario = 0;
+		
+		for(int i = CANT_PRODUCTOS_MIN; i < cantProductos; i++) {
+			valorInventario += Integer.parseInt(PRODUCTOS[i][2]) * Integer.parseInt(PRODUCTOS[i][3]);
+		}
+		
+		System.out.println("El valor total del inventario es de: $" + valorInventario);
+	}
+	
 
 	
 	private static int buscarNroEnMatriz(final String[][] MATRIZ, final int IND_COL, final int NRO_BUSCADO, final int LONGITUD) {
@@ -484,16 +500,16 @@ public class Principal {
 	}
 	
 	public static int cargarDatosPrueba(final String[][] PRODUCTOS, int cantProductos) {
-		PRODUCTOS[0] = new String[] {"1", "Smartphone Galaxy A54", "249999", "30"};
-	    PRODUCTOS[1] = new String[] {"2", "Laptop Lenovo Ryzen 5", "459999", "15"};
-	    PRODUCTOS[2] = new String[] {"3", "Auriculares Bluetooth Sony", "8999", "60"};
-	    PRODUCTOS[3] = new String[] {"4", "Teclado mecánico Logitech", "15999", "40"};
-	    PRODUCTOS[4] = new String[] {"5", "Mouse inalámbrico HyperX", "7499", "50"};
-	    PRODUCTOS[5] = new String[] {"6", "Monitor LG 24 pulgadas", "129999", "20"};
-	    PRODUCTOS[6] = new String[] {"7", "Tablet Samsung Galaxy Tab", "199999", "25"};
-	    PRODUCTOS[7] = new String[] {"8", "Disco SSD 1TB Kingston", "89999", "35"};
-	    PRODUCTOS[8] = new String[] {"9", "Cámara web Full HD", "11999", "45"};
-	    PRODUCTOS[9] = new String[] {"10", "Impresora HP multifunción", "159999", "10"};
+		PRODUCTOS[0] = new String[] {"101", "Yerba Mate", "1500", "20"};
+		PRODUCTOS[1] = new String[] {"102", "Aceite de Girasol", "2000", "15"};
+		PRODUCTOS[2] = new String[] {"103", "Harina 0000", "950", "30"};
+		PRODUCTOS[3] = new String[] {"104", "Arroz Largo Fino", "1200", "25"};
+		PRODUCTOS[4] = new String[] {"105", "Fideos Spaghetti", "850", "18"};
+		PRODUCTOS[5] = new String[] {"106", "Azúcar", "1100", "22"};
+		PRODUCTOS[6] = new String[] {"107", "Sal Fina", "700", "40"};
+		PRODUCTOS[7] = new String[] {"108", "Café Instantáneo", "2500", "12"};
+		PRODUCTOS[8] = new String[] {"109", "Leche Larga Vida", "1300", "30"};
+		PRODUCTOS[9] = new String[] {"110", "Galletitas Dulces", "950", "35"};
         cantProductos = 10;
         return cantProductos;
     }
