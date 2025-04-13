@@ -135,7 +135,7 @@ public class Principal {
 			}
 		case 10:
 			if(superaCantidadMinimaDeProductos) {
-				calcularValorInventario(s, PRODUCTOS, CANT_PRODUCTOS_MIN, cantProductos);
+				calcularValorInventario(s, PRODUCTOS, cantProductos);
 			} else {
 				System.out.println("No hay productos para calcular el valor del inventario.");
 			}
@@ -437,10 +437,10 @@ public class Principal {
 		return indiceDeStockMasBajo;
 	}
 	
-	private static void calcularValorInventario(Scanner s, final String[][] PRODUCTOS, final int CANT_PRODUCTOS_MIN, int cantProductos) {
+	private static void calcularValorInventario(Scanner s, final String[][] PRODUCTOS, int cantProductos) {
 		int valorInventario = 0;
 		
-		for(int i = CANT_PRODUCTOS_MIN; i < cantProductos; i++) {
+		for(int i = 0; i < cantProductos; i++) {
 			valorInventario += Integer.parseInt(PRODUCTOS[i][2]) * Integer.parseInt(PRODUCTOS[i][3]);
 		}
 		
